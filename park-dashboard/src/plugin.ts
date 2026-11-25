@@ -268,10 +268,23 @@ function refreshAll(): void {
         .join(", ");
     setText("thoughts", thoughtText.length > 0 ? `Thinking: ${thoughtText}` : "No notable thoughts");
 
-    setText(
-        "ridestats",
-        `Open ${rides.open} - Closed ${rides.closed} - Broken ${rides.broken} - Testing ${rides.testing} - Sim ${rides.simulating}`,
-    );
+    const rideParts: string[] = [];
+    if (rides.open > 0) {
+        rideParts.push(`Open ${rides.open}`);
+    }
+    if (rides.closed > 0) {
+        rideParts.push(`Closed ${rides.closed}`);
+    }
+    if (rides.broken > 0) {
+        rideParts.push(`Broken ${rides.broken}`);
+    }
+    if (rides.testing > 0) {
+        rideParts.push(`Testing ${rides.testing}`);
+    }
+    if (rides.simulating > 0) {
+        rideParts.push(`Sim ${rides.simulating}`);
+    }
+    setText("ridestats", rideParts.length > 0 ? rideParts.join(" - ") : "No rides yet");
     for (let i = 0; i < 3; i++) {
         const q = rides.worstQueues[i];
         setText(`queue${i}`, q ? `${i + 1}. ${q.name} - ${q.wait} min wait` : "");

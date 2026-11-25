@@ -317,9 +317,11 @@ function refreshWindow(): void {
             const box = win.findWidget<GroupBoxWidget>(`box${i}`);
             box.text = `${q.title}${questDoneMarker(q)}`;
             const bar = win.findWidget<LabelWidget>(`bar${i}`);
-            bar.text = q.done ? `${fmtMoney(q.reward)} bounty paid` : progressBar(currentProgress(q), q.target);
+            bar.text = q.done
+                ? `${fmtMoney(q.reward)} bounty paid`
+                : `${progressBar(currentProgress(q), q.target)} ${progressDetail(q, currentProgress(q))}`;
             const detail = win.findWidget<LabelWidget>(`detail${i}`);
-            detail.text = q.done ? q.goal : `${q.goal} - ${progressDetail(q, currentProgress(q))}`;
+            detail.text = q.goal;
             const rerollBtn = win.findWidget<ButtonWidget>(`reroll${i}`);
             rerollBtn.isDisabled = q.done;
         }
@@ -348,7 +350,7 @@ function openWindow(): void {
     win = ui.openWindow({
         classification: WINDOW_CLASS,
         width: 360,
-        height: 246,
+        height: 238,
         title: "Quest Board",
         colours: [24, 1, 1],
         widgets: buildWidgets(),
