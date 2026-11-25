@@ -3,5 +3,6 @@
   "compilerOptions": {
     "types": []
   },
-  "include": ["src/**/*.ts", "../openrct2.d.ts"]
+  "include": ["src/**/*.ts"],
+  "files": ["../openrct2.d.ts"]
 }
