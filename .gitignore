@@ -1,3 +1,6 @@
 node_modules/
 reference/Cheats.h
 reference/CheatSetAction.cpp
+reference/
+openrct2.d.ts
+.mockups/
