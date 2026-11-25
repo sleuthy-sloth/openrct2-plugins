@@ -1,0 +1,13 @@
+{
+  "name": "openrct2-plugins",
+  "private": true,
+  "description": "OpenRCT2 plugin monorepo: quest-board, park-dashboard, peep-stories",
+  "scripts": {
+    "build": "esbuild quest-board/src/plugin.ts --bundle --format=iife --target=es2020 --outfile=quest-board/dist/quest-board.js && esbuild park-dashboard/src/plugin.ts --bundle --format=iife --target=es2020 --outfile=park-dashboard/dist/park-dashboard.js && esbuild peep-stories/src/plugin.ts --bundle --format=iife --target=es2020 --outfile=peep-stories/dist/peep-stories.js",
+    "typecheck": "tsc --noEmit -p quest-board && tsc --noEmit -p park-dashboard && tsc --noEmit -p peep-stories"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.2",
+    "typescript": "^5.6.3"
+  }
+}
